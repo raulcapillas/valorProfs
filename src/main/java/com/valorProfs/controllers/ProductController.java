@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +36,6 @@ public class ProductController {
 		return this.productService.getOne(id);
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public @ResponseBody int insert(@RequestBody Product product, HttpServletRequest request) {
 		try {
@@ -47,7 +45,6 @@ public class ProductController {
 		}
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public @ResponseBody int update(@RequestBody Product product, HttpServletRequest request) {
 		try {
@@ -57,7 +54,6 @@ public class ProductController {
 		}
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
 	public @ResponseBody int delete(@RequestParam(value = "id", required = true) Integer id) {
 		try {

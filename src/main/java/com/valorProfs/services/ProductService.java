@@ -7,8 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.valorProfs.mapper.ProductMapper;
 import com.valorProfs.models.Product;
+import com.valorProfs.models.ProductMapper;
 
 @Service("productService")
 public class ProductService implements IProductService {

@@ -1,4 +1,4 @@
-package com.valorProfs.mapper;
+package com.valorProfs.models;
 
 import java.util.List;
 

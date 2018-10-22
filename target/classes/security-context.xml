@@ -1,5 +1,7 @@
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 	http://www.springframework.org/schema/security
@@ -18,21 +20,26 @@
 
 	<!-- Create the auth restrictions. create-session="stateless" means that 
 		a session will never be created, the user will have to send auth credentials 
-		each time. -->	
+		each time. -->
 	<http auto-config="true">
-		<intercept-url pattern="/product/insert**" access="ROLE_ADMIN" />
-		<intercept-url pattern="/product/update**" access="ROLE_ADMIN" />
-		<intercept-url pattern="/product/delete**" access="ROLE_ADMIN" />
-		<intercept-url pattern="/product/**" access="ROLE_ADMIN, ROLE_USER" />
+		<intercept-url pattern="/product/insert**"
+			access="ROLE_ADMIN" />
+		<intercept-url pattern="/product/update**"
+			access="ROLE_ADMIN" />
+		<intercept-url pattern="/product/delete**"
+			access="ROLE_ADMIN" />
+		<intercept-url pattern="/product/**"
+			access="ROLE_ADMIN, ROLE_USER" />
 	</http>
-	
 
 	<!-- Manages users. -->
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="admin@admin.com" password="admin123" authorities="ROLE_ADMIN" />
-				<user name="user@user.com" password="user123" authorities="ROLE_USER" />
+				<user name="admin@admin.com" password="admin123"
+					authorities="ROLE_ADMIN" />
+				<user name="user@user.com" password="user123"
+					authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
