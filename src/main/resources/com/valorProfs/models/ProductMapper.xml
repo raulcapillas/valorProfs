@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.valorProfs.models.ProductMapper">
+	<select id="selectAll"
+		resultType="com.valorProfs.models.Product">
+		select * from product
+	</select>
+
+	<select id="selectOneById" parameterType="java.lang.Integer"
+		resultType="com.valorProfs.models.Product">
+		SELECT * FROM product WHERE id=#{id}
+	</select>
+
+	<insert id="insertProduct"
+		parameterType='com.valorProfs.models.Product'>
+		insert into product (name,available,price,description)
+		values (#{name},#{available},#{price},#{description})
+	</insert>
+
+	<update id="updateProduct"
+		parameterType='com.valorProfs.models.Product'>
+		update product set
+		name = #{name},
+		available = #{available},
+		price = #{price},
+		description = #{description}
+		where id = #{id}
+	</update>
+
+	<delete id="deleteProduct" parameterType="java.lang.Integer">
+		delete from product
+		where id = #{id}
+	</delete>
+
+</mapper>

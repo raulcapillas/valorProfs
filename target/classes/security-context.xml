@@ -1,0 +1,40 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<beans:description>
+		This file defines all of the necessary security
+		configuration.
+
+		It is split from the applicationContext.xml file to make
+		it clearer
+		which beans and configuration elements are related to
+		security. It also makes it more reusable for other projects, as this
+		file can be copied to replicate the security configuration.
+	</beans:description>
+
+	<!-- Create the auth restrictions. create-session="stateless" means that 
+		a session will never be created, the user will have to send auth credentials 
+		each time. -->	
+	<http auto-config="true">
+		<intercept-url pattern="/product/insert**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/product/update**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/product/delete**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/product/**" access="ROLE_ADMIN, ROLE_USER" />
+	</http>
+	
+
+	<!-- Manages users. -->
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="admin@admin.com" password="admin123" authorities="ROLE_ADMIN" />
+				<user name="user@user.com" password="user123" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
